@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Anti ONTHATASS - Combattons les Sous-Vêtements Médiocres</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background: #0d0d0d;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            color: #fff;
+            background: radial-gradient(circle at 20% 20%, rgba(255, 0, 64, 0.25), transparent 40%),
+                        radial-gradient(circle at 80% 30%, rgba(255, 128, 0, 0.2), transparent 45%),
+                        radial-gradient(circle at 50% 80%, rgba(0, 200, 255, 0.2), transparent 35%),
+                        linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: "";
+            position: absolute;
+            top: -20%;
+            left: -20%;
+            width: 140%;
+            height: 140%;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.05), transparent 60%);
+            filter: blur(40px);
+            z-index: 0;
+        }
+
+        .hero-inner {
+            max-width: 1100px;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 14px;
+            background: rgba(255, 0, 64, 0.15);
+            color: #ff3456;
+            border: 1px solid rgba(255, 52, 86, 0.35);
+            border-radius: 999px;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            margin-bottom: 14px;
+        }
+
+        .title {
+            font-size: clamp(2.2rem, 5.2vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 12px;
+            font-weight: 800;
+            background: linear-gradient(180deg, #fff 0%, #ddd 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+            color: #c8c8c8;
+            max-width: 860px;
+            margin: 0 auto 24px;
+        }
+
+        .cta-row {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 18px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+            transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #171717;
+        }
+
+        .btn:hover { transform: translateY(-1px); }
+
+        .btn-primary {
+            background: linear-gradient(180deg, #ff3456, #c31c4b);
+            border-color: #ff4f7a;
+        }
+
+        .btn-secondary { background: #1f1f1f; }
+
+        .meta-row {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-top: 16px;
+            color: #939393;
+            font-size: 0.95rem;
+        }
+
+        .grid {
+            display: grid;
+            gap: 18px;
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 42px 20px 64px;
+        }
+
+        .card {
+            grid-column: span 12;
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            padding: 18px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        @media (min-width: 640px) {
+            .card { padding: 22px; }
+        }
+
+        @media (min-width: 768px) {
+            .col-4 { grid-column: span 4; }
+            .col-8 { grid-column: span 8; }
+            .col-6 { grid-column: span 6; }
+            .col-3 { grid-column: span 3; }
+        }
+
+        .card-title {
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .card-text { color: #c8c8c8; }
+
+        .pill {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #ff9fb6;
+            background: rgba(255,0,64,0.18);
+        }
+
+        .list {
+            margin-top: 10px;
+            color: #c8c8c8;
+            padding-left: 18px;
+        }
+
+        .list li { margin: 6px 0; }
+
+        .quote {
+            background: rgba(255,255,255,0.03);
+            border-left: 4px solid #ff3456;
+            padding: 12px 16px;
+            border-radius: 8px;
+            color: #d9d9d9;
+        }
+
+        .lowlight { color: #bababa; }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px 50px;
+            color: #9e9e9e;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+        }
+
+        .logo {
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 0.6px;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="badge">Unis Contre les Sous-Vêtements Inconfortables, Surpayés et Surévalués</span>
+            <h1 class="title">Rejoins La Résistance</h1>
+            <p class="subtitle">
+                Tout a commencé avec une question simple : <strong>Pourquoi payons-nous des prix exorbitants pour un confort médiocre ?</strong>
+            </p>
+            <div class="cta-row">
+                <a class="btn btn-primary" href="#manifeste">Lire le Manifeste</a>
+                <a class="btn btn-secondary" href="#actions">Nos Actions</a>
+                <a class="btn btn-secondary" href="#temoignages">Témoignages</a>
+            </div>
+            <div class="meta-row">
+                <span>Indépendant et sans sponsor</span>
+                <span>Club créé par des consommateurs</span>
+            </div>
+        </div>
+    </section>
+
+    <main class="grid">
+        <article class="card col-8" id="manifeste">
+            <h2 class="card-title">Notre Manifeste : Pourquoi ONTHATASS n'est pas le "Luxe" qu'ils vendent</h2>
+            <p class="card-text">
+                ONTHATASS a débarqué sur le marché avec un marketing tapageur, des célébrités payées et des promesses de <em>"confort révolutionnaire"</em>.
+                Ce qu'ils ont livré était tout sauf révolutionnaire. <strong>Des irritations. De l'inconfort. Du coton hors de prix qui se désagrège après trois lavages.</strong>
+            </p>
+            <p class="card-text">
+                Nous sommes le <strong>Club Anti ONTHATASS</strong>. Nous sommes des consommateurs qui ont refusé de se taire.
+                Nous sommes la résistance contre la médiocrité déguisée en luxe. Nous sommes là pour exposer la vérité et nous battre pour ce que les sous-vêtements devraient vraiment être :
+                <strong>confortables, durables et à un prix juste.</strong>
+            </p>
+        </article>
+
+        <aside class="card col-4">
+            <h3 class="card-title">Le Coût de la Supercherie</h3>
+            <ul class="list">
+                <li><strong>45€</strong> pour un seul slip ? Ils ne sont pas en or, mais ils sont tarifés comme s'ils l'étaient.</li>
+                <li>Ce n'est pas du luxe—c'est <strong>du vol à main armée</strong> déguisé en branding premium.</li>
+            </ul>
+        </aside>
+
+        <section class="card col-6">
+            <h3 class="card-title">Le Confort ? Mon Œil</h3>
+            <p class="card-text lowlight">
+                "Confort nuageux" disaient-ils. Plutôt comme s'asseoir sur un canapé bosselé avec des ressorts qui percent.
+                Leur "design ergonomique" n'est qu'un jargon sophistiqué pour <strong>mauvaise coupe</strong> et <strong>réajustements constants</strong>.
+            </p>
+        </section>
+
+        <section class="card col-6">
+            <h3 class="card-title">Qualité Éphémère</h3>
+            <p class="card-text lowlight">
+                Élastiques qui se détendent après un mois. Coutures qui se défont au lavage. Tissu qui fait des bouloches plus vite qu'une pharmacie.
+                C'est de la <strong>mode jetable</strong> à prix permanent.
+            </p>
+        </section>
+
+        <section class="card col-6">
+            <span class="pill">Le Marketing Ne Fait Pas la Qualité</span>
+            <p class="card-text" style="margin-top:10px;">
+                Les endorsements de célébrités ne garantissent pas la qualité. Les partenariats avec influenceurs ne rendent pas les mauvais sous-vêtements bons.
+                Ils ont dépensé des millions en marketing au lieu d'améliorer leur produit.
+            </p>
+        </section>
+
+        <section class="card col-6">
+            <span class="pill">Greenwashing et Hypocrisie</span>
+            <p class="card-text" style="margin-top:10px;">
+                Greenwashing de leur production tout en utilisant des matériaux non durables.
+                Faisant des déclarations environnementales audacieuses pendant que leur chaîne d'approvisionnement raconte une histoire différente.
+            </p>
+        </section>
+
+        <section class="card col-12" id="temoignages">
+            <h3 class="card-title">Témoignages Réels, Pas Sponsorisés</h3>
+            <blockquote class="quote">"J'ai dépensé 180€ pour quatre paires et elles sont toutes tombées en lambeaux en trois mois. Quand j'ai essayé de les retourner, le service client m'a ignoré. Plus jamais."</blockquote>
+            <blockquote class="quote">"La journée la plus inconfortable de ma vie a été de porter du ONTHATASS pendant un vol de 10 heures. Je n'ai jamais ressenti autant de regret pour un choix vestimentaire."</blockquote>
+            <blockquote class="quote">"J'ai cru au battage médiatique. J'ai cru aux pubs Instagram. J'ai cru aux influenceurs. Que des mensonges. Ce club m'a ouvert les yeux sur la vérité des arnaques aux sous-vêtements premium."</blockquote>
+        </section>
+
+        <section class="card col-12" id="actions">
+            <h3 class="card-title">Notre Mission</h3>
+            <p class="card-text">
+                Nous existons pour exposer la vérité sur ONTHATASS et protéger les consommateurs de tomber dans le piège du marketing coûteux plutôt que de la vraie qualité.
+            </p>
+            <ul class="list">
+                <li><strong>Exposer les fausses promesses</strong></li>
+                <li><strong>Défendre les consommateurs</strong></li>
+                <li><strong>Exiger la responsabilité</strong></li>
+            </ul>
+        </section>
+
+        <section class="card col-12">
+            <h3 class="card-title">Ce Que Nous Croyons</h3>
+            <p class="card-text">
+                Nous croyons que tout le monde mérite des sous-vêtements <strong>confortables</strong>, <strong>durables</strong> et <strong>à prix équitable</strong>.
+                Nous croyons que les entreprises doivent être tenues responsables de leurs revendications. Nous croyons que la vérité compte plus que l'image de marque tendance.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p class="logo">Club Anti ONTHATASS</p>
+        <p>Créé par des consommateurs, pour des consommateurs. Aucune affiliation, aucun sponsor, seulement la vérité.</p>
+        <p>Contact : resistance@anti-onthatass.org</p>
+    </footer>
+</body>
+</html>
